@@ -1,0 +1,9 @@
+version: '3'
+services:
+  race-session:
+    build: .
+    ports:
+      - "9000:80"
+
+
+
