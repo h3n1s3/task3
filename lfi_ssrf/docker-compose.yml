@@ -1,0 +1,22 @@
+version: '3'
+services:
+  web-app:
+    build: .
+    ports:
+      - "8088:80"
+    networks:
+      - internal-net
+    depends_on:
+      - redis-db
+    volumes:
+      - ./src:/var/www/html
+  redis-db:
+    image: redis:4.0
+    networks:
+      - internal-net
+    volumes:
+      - ./src:/var/www/html
+    user: root
+networks:
+  internal-net:
+    driver: bridge
